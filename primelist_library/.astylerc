@@ -1,0 +1,8 @@
+style=bsd
+indent=spaces=2
+unpad-paren
+pad-oper
+delete-empty-lines
+align-pointer=middle
+align-reference=middle
+add-braces

@@ -1,0 +1,5 @@
+pre-commit does not need to be added to the project and version control
+
+when merging (lab 7), it was necessary to replace all the values of the error codes in the return statements with constants
+
+there should have been no commits in the repository of the graphical application in the main branch (and the merge should have been performed completely automatically)

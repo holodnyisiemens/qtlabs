@@ -1,0 +1,92 @@
+#include "primelist_library.h"
+
+#include <cstdlib>
+#include <iostream>
+#include <sstream>
+#include <stdexcept>
+#include <vector>
+
+enum error_code {
+    no_error = 0,
+    not_enough_arguments = 1,
+    invalid_type = 2,
+    invalid_value = 3,
+    invalid_range = 4
+};
+
+int main(int argc, char * argv[]) {
+<<<<<<< HEAD
+    if(argc < 3) {
+        // вывести сообщение об ошибке и завершить работу программы
+        std::cerr << "Missing parameters" << std::endl;
+        return not_enough_arguments;
+    }
+    std::istringstream astr(argv[1]), bstr(argv[2]);
+    int a, b;
+    astr >> a;
+    bstr >> b;
+    if(astr.fail() || !astr.eof()) {
+        // вывести сообщение об ошибке и завершить работу программы
+        std::cerr << "A must be an integer" << std::endl;
+        return invalid_type;
+    }
+    if(bstr.fail() || !bstr.eof()) {
+        // вывести сообщение об ошибке и завершить работу программы
+        std::cerr << "B must be an integer" << std::endl;
+        return invalid_type;
+    }
+    if(a <= 0) {
+        // вывести сообщение об ошибке и завершить работу программы
+        std::cerr << "A must be a positive number" << std::endl;
+        return invalid_value;
+    }
+    if(b <= 0) {
+        // вывести сообщение об ошибке и завершить работу программы
+        std::cerr << "B must be a positive number" << std::endl;
+        return invalid_value;
+    }
+    if(b <= a) {
+        // вывести сообщение об ошибке и завершить работу программы
+        std::cerr << "A must be less than B" << std::endl;
+        return invalid_range;
+    }
+    auto r = primelist(a, b);
+    for(auto n : r) {
+        std::cout << n << std::endl;
+    }
+    return no_error;
+=======
+    try {
+        if(argc < 3) {
+            throw std::length_error("Missing parameters");
+        }
+        std::istringstream astr(argv[1]), bstr(argv[2]);
+        int a, b;
+        astr >> a;
+        bstr >> b;
+        if(astr.fail() || !astr.eof()) {
+            throw std::invalid_argument("A must be an integer");
+        }
+        if(bstr.fail() || !bstr.eof()) {
+            throw std::invalid_argument("B must be an integer");
+        }
+        if(a <= 0) {
+            throw std::out_of_range("A must be positive");
+        }
+        if(b <= 0) {
+            throw std::out_of_range("B must be positive");
+        }
+        if(b <= a) {
+            throw std::domain_error("A must be less than B");
+        }
+        auto r = primelist(a, b);
+        for(auto n : r) {
+            std::cout << n << std::endl;
+        }
+    } catch(std::exception const & e) {
+        std::cerr << e.what() << std::endl;
+        return 1;
+    }
+    return 0;
+>>>>>>> refs/heads/exceptions
+}
